@@ -11,7 +11,7 @@ This code connects a TCP server, send a word, waits to receive the same word bac
 It's an echo client
 My arguments are: 127.0.0.1 hello 7
  */
-public class Client {
+public class SimpleTCPClient {
 
     public static void main(String[] args) throws IOException {
 

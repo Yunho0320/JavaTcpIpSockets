@@ -7,7 +7,7 @@ import java.io.*;    // for IOException and Input/OutputStream
 It's an echo server
 Only one argument, port number, 7
  */
-public class Server {
+public class SimpleTCPServer {
 
     private static final int BUFSIZE = 32;   // Size of receive buffer
 
