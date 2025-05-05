@@ -1,0 +1,33 @@
+Brief touch on serialization
+Serialization is the process of converting a data object into a byte stream.
+This allows us to save, store, and transfer the object over a network.
+
+We can serialize String object as below:
+String myStr = "hello";
+byte[] result = myStr.getBytes();
+
+We can also serialize a complex java object, user which of type Class User with multiple fields as below:
+byte[] data = SerializationUtils.serialize(user);
+
+The basic idea is quite simple but the question is what's happening under the hood?
+Also where does masking comes into play in serialization?
+
+First, let's go through what's going on when we serialize String objects.
+This one is very simple.
+Each letter in a String object is encoded to bytes using UTF-8 encoding standard.
+Why UTF-8? Because it makes each letter into 8 bits which is 1 byte, and serialization is converting an object into a "byte" stream.
+So hello will be [104, 101, 108, 108, 111] -> See EncodingPrerequisiteTwo.
+Hmmm, I thought they'd be in bits... Why are they in decimal?
+
+
+
+In this file, I'm going to revise what mask is.
+First, let's go through & (bitwise AND) which preserves bits that are 1 in both operands
+See the example below.
+     1 1 1 0 1 1 0 1     input
+(&)  0 0 1 1 1 1 0 0      mask
+------------------------------
+     0 0 1 0 1 1 0 0    output
+Now we get the gist of what masking does.
+
+Then what is bytemask?
